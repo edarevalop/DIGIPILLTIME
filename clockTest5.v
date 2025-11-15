@@ -1,3 +1,12 @@
+// ------------------------------------------------------------------
+// Proyecto: Pastillero Digital FPGA
+// Autores: Edward Jeisen Jair Arévalo Peña, Valentina Muñoz Rodríguez
+
+// Basado en: FPGA_I2C_Implementation
+// Autor original: Angelo Jacobo (2021)
+// Repositorio: https://github.com/AngeloJacobo/FPGA_I2C_Implementation
+// ------------------------------------------------------------------
+
 `timescale 1ns / 1ps
 
 module clockTest5(
