@@ -1,0 +1,157 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "RS",
+					"strict" : false
+				},
+				{
+					"name" : "E",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_data[0]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_data[1]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_data[2]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_data[3]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_data[4]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_data[5]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_data[7]",
+					"strict" : false
+				},
+				{
+					"name" : "hour[0]",
+					"strict" : false
+				},
+				{
+					"name" : "hour[1]",
+					"strict" : false
+				},
+				{
+					"name" : "hour[2]",
+					"strict" : false
+				},
+				{
+					"name" : "hour[3]",
+					"strict" : false
+				},
+				{
+					"name" : "hour[4]",
+					"strict" : false
+				},
+				{
+					"name" : "minute[0]",
+					"strict" : false
+				},
+				{
+					"name" : "minute[1]",
+					"strict" : false
+				},
+				{
+					"name" : "minute[2]",
+					"strict" : false
+				},
+				{
+					"name" : "minute[3]",
+					"strict" : false
+				},
+				{
+					"name" : "minute[4]",
+					"strict" : false
+				},
+				{
+					"name" : "minute[5]",
+					"strict" : false
+				},
+				{
+					"name" : "second[0]",
+					"strict" : false
+				},
+				{
+					"name" : "second[1]",
+					"strict" : false
+				},
+				{
+					"name" : "second[2]",
+					"strict" : false
+				},
+				{
+					"name" : "second[3]",
+					"strict" : false
+				},
+				{
+					"name" : "second[4]",
+					"strict" : false
+				},
+				{
+					"name" : "second[5]",
+					"strict" : false
+				},
+				{
+					"name" : "blink_led",
+					"strict" : false
+				},
+				{
+					"name" : "blink_led_delayed",
+					"strict" : false
+				},
+				{
+					"name" : "ext_leds[0]",
+					"strict" : false
+				},
+				{
+					"name" : "ext_leds[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ext_leds[2]",
+					"strict" : false
+				},
+				{
+					"name" : "ext_leds[3]",
+					"strict" : false
+				},
+				{
+					"name" : "ext_leds[4]",
+					"strict" : false
+				},
+				{
+					"name" : "bell",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "rst_n",
+					"strict" : false
+				},
+				{
+					"name" : "key0",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

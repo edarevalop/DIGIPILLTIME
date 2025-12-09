@@ -1,0 +1,16 @@
+Fitter Status : Successful - Mon Dec  8 18:36:07 2025
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Revision Name : Cronometro
+Top-level Entity Name : Cronometro
+Family : Cyclone IV E
+Device : EP4CE10E22C8
+Timing Models : Final
+Total logic elements : 623 / 10,320 ( 6 % )
+    Total combinational functions : 596 / 10,320 ( 6 % )
+    Dedicated logic registers : 248 / 10,320 ( 2 % )
+Total registers : 248
+Total pins : 50 / 92 ( 54 % )
+Total virtual pins : 0
+Total memory bits : 0 / 423,936 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 46 ( 0 % )
+Total PLLs : 0 / 2 ( 0 % )

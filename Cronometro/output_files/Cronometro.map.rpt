@@ -1,0 +1,767 @@
+Analysis & Synthesis report for Cronometro
+Mon Dec  8 18:35:59 2025
+Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |Cronometro|state_q
+  9. State Machine - |Cronometro|debounce_explicit:m2|state_reg
+ 10. State Machine - |Cronometro|i2c_top:m0|state_q
+ 11. Registers Removed During Synthesis
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Parameter Settings for User Entity Instance: i2c_top:m0
+ 17. Parameter Settings for User Entity Instance: LED_mux:m1
+ 18. Parameter Settings for Inferred Entity Instance: PruebaPantallaLCD:lcd_inst|lpm_divide:Div0
+ 19. Parameter Settings for Inferred Entity Instance: PruebaPantallaLCD:lcd_inst|lpm_divide:Mod0
+ 20. Parameter Settings for Inferred Entity Instance: PruebaPantallaLCD:lcd_inst|lpm_divide:Div1
+ 21. Parameter Settings for Inferred Entity Instance: PruebaPantallaLCD:lcd_inst|lpm_divide:Mod1
+ 22. Parameter Settings for Inferred Entity Instance: PruebaPantallaLCD:lcd_inst|lpm_divide:Div2
+ 23. Parameter Settings for Inferred Entity Instance: PruebaPantallaLCD:lcd_inst|lpm_divide:Mod2
+ 24. Port Connectivity Checks: "debounce_explicit:m2"
+ 25. Port Connectivity Checks: "LED_mux:m1"
+ 26. Post-Synthesis Netlist Statistics for Top Partition
+ 27. Elapsed Time Per Partition
+ 28. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Mon Dec  8 18:35:59 2025           ;
+; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
+; Revision Name                      ; Cronometro                                      ;
+; Top-level Entity Name              ; Cronometro                                      ;
+; Family                             ; Cyclone IV E                                    ;
+; Total logic elements               ; 655                                             ;
+;     Total combinational functions  ; 596                                             ;
+;     Dedicated logic registers      ; 248                                             ;
+; Total registers                    ; 248                                             ;
+; Total pins                         ; 50                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE10E22C8       ;                    ;
+; Top-level entity name                                            ; Cronometro         ; Cronometro         ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                            ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------+---------+
+; cronometro.v                     ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/cronometro.v                    ;         ;
+; i2c_top.v                        ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/i2c_top.v                       ;         ;
+; led_mux.v                        ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/led_mux.v                       ;         ;
+; debounce_explicit.v              ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/debounce_explicit.v             ;         ;
+; pruebapantallalcd.v              ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v             ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; d:/junior/u/electronicadigital/fpga/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; d:/junior/u/electronicadigital/fpga/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; d:/junior/u/electronicadigital/fpga/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal241.inc                   ; yes             ; Megafunction                 ; d:/junior/u/electronicadigital/fpga/quartus/libraries/megafunctions/aglobal241.inc      ;         ;
+; db/lpm_divide_ghm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/lpm_divide_ghm.tdf           ;         ;
+; db/sign_div_unsign_8kh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/sign_div_unsign_8kh.tdf      ;         ;
+; db/alt_u_div_44f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/alt_u_div_44f.tdf            ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/add_sub_7pc.tdf              ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/add_sub_8pc.tdf              ;         ;
+; db/lpm_divide_j9m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/lpm_divide_j9m.tdf           ;         ;
+; db/lpm_divide_hhm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/lpm_divide_hhm.tdf           ;         ;
+; db/sign_div_unsign_9kh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/sign_div_unsign_9kh.tdf      ;         ;
+; db/alt_u_div_64f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/alt_u_div_64f.tdf            ;         ;
+; db/lpm_divide_k9m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/lpm_divide_k9m.tdf           ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 655       ;
+;                                             ;           ;
+; Total combinational functions               ; 596       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 211       ;
+;     -- 3 input functions                    ; 114       ;
+;     -- <=2 input functions                  ; 271       ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 422       ;
+;     -- arithmetic mode                      ; 174       ;
+;                                             ;           ;
+; Total registers                             ; 248       ;
+;     -- Dedicated logic registers            ; 248       ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 50        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 248       ;
+; Total fan-out                               ; 2622      ;
+; Average fan-out                             ; 2.77      ;
++---------------------------------------------+-----------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                    ; Entity Name         ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |Cronometro                               ; 596 (90)            ; 248 (81)                  ; 0           ; 0            ; 0       ; 0         ; 50   ; 0            ; |Cronometro                                                                                                                            ; Cronometro          ; work         ;
+;    |LED_mux:m1|                           ; 61 (61)             ; 19 (19)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|LED_mux:m1                                                                                                                 ; LED_mux             ; work         ;
+;    |PruebaPantallaLCD:lcd_inst|           ; 311 (153)           ; 82 (82)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst                                                                                                 ; PruebaPantallaLCD   ; work         ;
+;       |lpm_divide:Div0|                   ; 17 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_ghm:auto_generated|  ; 17 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Div0|lpm_divide_ghm:auto_generated                                                   ; lpm_divide_ghm      ; work         ;
+;             |sign_div_unsign_8kh:divider| ; 17 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Div0|lpm_divide_ghm:auto_generated|sign_div_unsign_8kh:divider                       ; sign_div_unsign_8kh ; work         ;
+;                |alt_u_div_44f:divider|    ; 17 (17)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Div0|lpm_divide_ghm:auto_generated|sign_div_unsign_8kh:divider|alt_u_div_44f:divider ; alt_u_div_44f       ; work         ;
+;       |lpm_divide:Div1|                   ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Div1                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_hhm:auto_generated|  ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Div1|lpm_divide_hhm:auto_generated                                                   ; lpm_divide_hhm      ; work         ;
+;             |sign_div_unsign_9kh:divider| ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Div1|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh ; work         ;
+;                |alt_u_div_64f:divider|    ; 30 (30)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Div1|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider ; alt_u_div_64f       ; work         ;
+;       |lpm_divide:Div2|                   ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Div2                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_hhm:auto_generated|  ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Div2|lpm_divide_hhm:auto_generated                                                   ; lpm_divide_hhm      ; work         ;
+;             |sign_div_unsign_9kh:divider| ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Div2|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh ; work         ;
+;                |alt_u_div_64f:divider|    ; 30 (30)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Div2|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider ; alt_u_div_64f       ; work         ;
+;       |lpm_divide:Mod0|                   ; 17 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_j9m:auto_generated|  ; 17 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Mod0|lpm_divide_j9m:auto_generated                                                   ; lpm_divide_j9m      ; work         ;
+;             |sign_div_unsign_8kh:divider| ; 17 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Mod0|lpm_divide_j9m:auto_generated|sign_div_unsign_8kh:divider                       ; sign_div_unsign_8kh ; work         ;
+;                |alt_u_div_44f:divider|    ; 17 (17)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Mod0|lpm_divide_j9m:auto_generated|sign_div_unsign_8kh:divider|alt_u_div_44f:divider ; alt_u_div_44f       ; work         ;
+;       |lpm_divide:Mod1|                   ; 33 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Mod1                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_k9m:auto_generated|  ; 33 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Mod1|lpm_divide_k9m:auto_generated                                                   ; lpm_divide_k9m      ; work         ;
+;             |sign_div_unsign_9kh:divider| ; 33 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Mod1|lpm_divide_k9m:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh ; work         ;
+;                |alt_u_div_64f:divider|    ; 33 (33)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Mod1|lpm_divide_k9m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider ; alt_u_div_64f       ; work         ;
+;       |lpm_divide:Mod2|                   ; 31 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Mod2                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_k9m:auto_generated|  ; 31 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Mod2|lpm_divide_k9m:auto_generated                                                   ; lpm_divide_k9m      ; work         ;
+;             |sign_div_unsign_9kh:divider| ; 31 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Mod2|lpm_divide_k9m:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh ; work         ;
+;                |alt_u_div_64f:divider|    ; 31 (31)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|PruebaPantallaLCD:lcd_inst|lpm_divide:Mod2|lpm_divide_k9m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider ; alt_u_div_64f       ; work         ;
+;    |debounce_explicit:m2|                 ; 41 (41)             ; 25 (25)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|debounce_explicit:m2                                                                                                       ; debounce_explicit   ; work         ;
+;    |i2c_top:m0|                           ; 93 (93)             ; 41 (41)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Cronometro|i2c_top:m0                                                                                                                 ; i2c_top             ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Cronometro|state_q                                                                                                                                                                                                                                                                   ;
++--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+--------------+
+; Name         ; state_q.i_r ; state_q.h_r ; state_q.g_r ; state_q.f_r ; state_q.e_r ; state_q.d_r ; state_q.c_r ; state_q.b_r ; state_q.a_r ; state_q.j_w ; state_q.i_w ; state_q.h_w ; state_q.g_w ; state_q.f_w ; state_q.e_w ; state_q.d_w ; state_q.c_w ; state_q.b_w ; state_q.a_w ; state_q.idle ;
++--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+--------------+
+; state_q.idle ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ;
+; state_q.a_w  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 1            ;
+; state_q.b_w  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 1            ;
+; state_q.c_w  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 1            ;
+; state_q.d_w  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.e_w  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.f_w  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.g_w  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.h_w  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.i_w  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.j_w  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.a_r  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.b_r  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.c_r  ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.d_r  ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.e_r  ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.f_r  ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.g_r  ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.h_r  ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state_q.i_r  ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ;
++--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+--------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------+
+; State Machine - |Cronometro|debounce_explicit:m2|state_reg                              ;
++------------------+------------------+---------------+------------------+----------------+
+; Name             ; state_reg.delay1 ; state_reg.one ; state_reg.delay0 ; state_reg.idle ;
++------------------+------------------+---------------+------------------+----------------+
+; state_reg.idle   ; 0                ; 0             ; 0                ; 0              ;
+; state_reg.delay0 ; 0                ; 0             ; 1                ; 1              ;
+; state_reg.one    ; 0                ; 1             ; 0                ; 1              ;
+; state_reg.delay1 ; 1                ; 0             ; 0                ; 1              ;
++------------------+------------------+---------------+------------------+----------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Cronometro|i2c_top:m0|state_q                                                                                                                                          ;
++---------------------+----------------+--------------------+--------------+--------------------+---------------------+----------------+------------------+--------------+----------------+
+; Name                ; state_q.stop_1 ; state_q.ack_master ; state_q.read ; state_q.renew_data ; state_q.ack_servant ; state_q.packet ; state_q.starting ; state_q.idle ; state_q.stop_2 ;
++---------------------+----------------+--------------------+--------------+--------------------+---------------------+----------------+------------------+--------------+----------------+
+; state_q.idle        ; 0              ; 0                  ; 0            ; 0                  ; 0                   ; 0              ; 0                ; 0            ; 0              ;
+; state_q.starting    ; 0              ; 0                  ; 0            ; 0                  ; 0                   ; 0              ; 1                ; 1            ; 0              ;
+; state_q.packet      ; 0              ; 0                  ; 0            ; 0                  ; 0                   ; 1              ; 0                ; 1            ; 0              ;
+; state_q.ack_servant ; 0              ; 0                  ; 0            ; 0                  ; 1                   ; 0              ; 0                ; 1            ; 0              ;
+; state_q.renew_data  ; 0              ; 0                  ; 0            ; 1                  ; 0                   ; 0              ; 0                ; 1            ; 0              ;
+; state_q.read        ; 0              ; 0                  ; 1            ; 0                  ; 0                   ; 0              ; 0                ; 1            ; 0              ;
+; state_q.ack_master  ; 0              ; 1                  ; 0            ; 0                  ; 0                   ; 0              ; 0                ; 1            ; 0              ;
+; state_q.stop_1      ; 1              ; 0                  ; 0            ; 0                  ; 0                   ; 0              ; 0                ; 1            ; 0              ;
+; state_q.stop_2      ; 0              ; 0                  ; 0            ; 0                  ; 0                   ; 0              ; 0                ; 1            ; 1              ;
++---------------------+----------------+--------------------+--------------+--------------------+---------------------+----------------+------------------+--------------+----------------+
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; PruebaPantallaLCD:lcd_inst|state[4..7] ; Stuck at GND due to stuck port data_in ;
+; sec1_q[3]                              ; Stuck at GND due to stuck port data_in ;
+; min1_q[3]                              ; Stuck at GND due to stuck port data_in ;
+; hour1_q[1..3]                          ; Stuck at GND due to stuck port data_in ;
+; date1_q[2,3]                           ; Stuck at GND due to stuck port data_in ;
+; month1_q[1..3]                         ; Stuck at GND due to stuck port data_in ;
+; state_q~4                              ; Lost fanout                            ;
+; state_q~5                              ; Lost fanout                            ;
+; state_q~6                              ; Lost fanout                            ;
+; state_q~7                              ; Lost fanout                            ;
+; state_q~8                              ; Lost fanout                            ;
+; debounce_explicit:m2|state_reg~4       ; Lost fanout                            ;
+; debounce_explicit:m2|state_reg~5       ; Lost fanout                            ;
+; i2c_top:m0|state_q~4                   ; Lost fanout                            ;
+; i2c_top:m0|state_q~5                   ; Lost fanout                            ;
+; i2c_top:m0|state_q~6                   ; Lost fanout                            ;
+; PruebaPantallaLCD:lcd_inst|lcd_data[6] ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 25 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                              ;
++-------------------------------------+---------------------------+----------------------------------------+
+; Register name                       ; Reason for Removal        ; Registers Removed due to This Register ;
++-------------------------------------+---------------------------+----------------------------------------+
+; PruebaPantallaLCD:lcd_inst|state[4] ; Stuck at GND              ; PruebaPantallaLCD:lcd_inst|lcd_data[6] ;
+;                                     ; due to stuck port data_in ;                                        ;
++-------------------------------------+---------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 248   ;
+; Number of registers using Synchronous Clear  ; 28    ;
+; Number of registers using Synchronous Load   ; 7     ;
+; Number of registers using Asynchronous Clear ; 166   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 141   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; bell_enabled                           ; 2       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+; 3:1                ; 21 bits   ; 42 LEs        ; 21 LEs               ; 21 LEs                 ; Yes        ; |Cronometro|debounce_explicit:m2|timer_reg[9]      ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Cronometro|blink_counter[0]                       ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |Cronometro|PruebaPantallaLCD:lcd_inst|ecnt[4]     ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Cronometro|i2c_top:m0|wr_data_q[2]                ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 6 LEs                ; 14 LEs                 ; Yes        ; |Cronometro|PruebaPantallaLCD:lcd_inst|lcd_data[7] ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 32 LEs               ; 8 LEs                  ; Yes        ; |Cronometro|PruebaPantallaLCD:lcd_inst|lcd_data[2] ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Cronometro|PruebaPantallaLCD:lcd_inst|lcd_data[5] ;
+; 12:1               ; 4 bits    ; 32 LEs        ; 12 LEs               ; 20 LEs                 ; Yes        ; |Cronometro|i2c_top:m0|idx_q[2]                    ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |Cronometro|debounce_explicit:m2|Selector4         ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |Cronometro|debounce_explicit:m2|Selector3         ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |Cronometro|i2c_top:m0|Selector21                  ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |Cronometro|Selector11                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+
+
++---------------------------------------------------------+
+; Parameter Settings for User Entity Instance: i2c_top:m0 ;
++----------------+--------+-------------------------------+
+; Parameter Name ; Value  ; Type                          ;
++----------------+--------+-------------------------------+
+; freq           ; 100000 ; Signed Integer                ;
++----------------+--------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LED_mux:m1 ;
++----------------+-------+--------------------------------+
+; Parameter Name ; Value ; Type                           ;
++----------------+-------+--------------------------------+
+; N              ; 19    ; Signed Integer                 ;
++----------------+-------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: PruebaPantallaLCD:lcd_inst|lpm_divide:Div0 ;
++------------------------+----------------+---------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                              ;
++------------------------+----------------+---------------------------------------------------+
+; LPM_WIDTHN             ; 5              ; Untyped                                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                           ;
+; CBXI_PARAMETER         ; lpm_divide_ghm ; Untyped                                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                    ;
++------------------------+----------------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: PruebaPantallaLCD:lcd_inst|lpm_divide:Mod0 ;
++------------------------+----------------+---------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                              ;
++------------------------+----------------+---------------------------------------------------+
+; LPM_WIDTHN             ; 5              ; Untyped                                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                           ;
+; CBXI_PARAMETER         ; lpm_divide_j9m ; Untyped                                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                    ;
++------------------------+----------------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: PruebaPantallaLCD:lcd_inst|lpm_divide:Div1 ;
++------------------------+----------------+---------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                              ;
++------------------------+----------------+---------------------------------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                           ;
+; CBXI_PARAMETER         ; lpm_divide_hhm ; Untyped                                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                    ;
++------------------------+----------------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: PruebaPantallaLCD:lcd_inst|lpm_divide:Mod1 ;
++------------------------+----------------+---------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                              ;
++------------------------+----------------+---------------------------------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                           ;
+; CBXI_PARAMETER         ; lpm_divide_k9m ; Untyped                                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                    ;
++------------------------+----------------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: PruebaPantallaLCD:lcd_inst|lpm_divide:Div2 ;
++------------------------+----------------+---------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                              ;
++------------------------+----------------+---------------------------------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                           ;
+; CBXI_PARAMETER         ; lpm_divide_hhm ; Untyped                                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                    ;
++------------------------+----------------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: PruebaPantallaLCD:lcd_inst|lpm_divide:Mod2 ;
++------------------------+----------------+---------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                              ;
++------------------------+----------------+---------------------------------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                           ;
+; CBXI_PARAMETER         ; lpm_divide_k9m ; Untyped                                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                    ;
++------------------------+----------------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "debounce_explicit:m2"      ;
++----------+--------+----------+------------------------+
+; Port     ; Type   ; Severity ; Details                ;
++----------+--------+----------+------------------------+
+; db_level ; Output ; Info     ; Explicitly unconnected ;
++----------+--------+----------+------------------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "LED_mux:m1"      ;
++-----------+-------+----------+--------------+
+; Port      ; Type  ; Severity ; Details      ;
++-----------+-------+----------+--------------+
+; in0[5..4] ; Input ; Info     ; Stuck at GND ;
+; in1[5..4] ; Input ; Info     ; Stuck at GND ;
+; in2[5]    ; Input ; Info     ; Stuck at VCC ;
+; in2[4]    ; Input ; Info     ; Stuck at GND ;
+; in3[5..4] ; Input ; Info     ; Stuck at GND ;
+; in4[5]    ; Input ; Info     ; Stuck at VCC ;
+; in4[4]    ; Input ; Info     ; Stuck at GND ;
+; in5[5..4] ; Input ; Info     ; Stuck at GND ;
++-----------+-------+----------+--------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 50                          ;
+; cycloneiii_ff         ; 248                         ;
+;     CLR               ; 60                          ;
+;     ENA               ; 23                          ;
+;     ENA CLR           ; 85                          ;
+;     ENA CLR SCLR      ; 21                          ;
+;     ENA SCLR          ; 6                           ;
+;     ENA SCLR SLD      ; 1                           ;
+;     ENA SLD           ; 5                           ;
+;     SLD               ; 1                           ;
+;     plain             ; 46                          ;
+; cycloneiii_io_obuf    ; 2                           ;
+; cycloneiii_lcell_comb ; 605                         ;
+;     arith             ; 174                         ;
+;         2 data inputs ; 124                         ;
+;         3 data inputs ; 50                          ;
+;     normal            ; 431                         ;
+;         0 data inputs ; 17                          ;
+;         1 data inputs ; 20                          ;
+;         2 data inputs ; 119                         ;
+;         3 data inputs ; 64                          ;
+;         4 data inputs ; 211                         ;
+;                       ;                             ;
+; Max LUT depth         ; 9.10                        ;
+; Average LUT depth     ; 4.53                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+    Info: Processing started: Mon Dec  8 18:35:48 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Cronometro -c Cronometro
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Warning (12125): Using design file cronometro.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: Cronometro File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/cronometro.v Line: 3
+Info (12127): Elaborating entity "Cronometro" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at cronometro.v(162): truncated value with size 32 to match size of target (4) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/cronometro.v Line: 162
+Warning (12125): Using design file i2c_top.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: i2c_top File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/i2c_top.v Line: 3
+Info (12128): Elaborating entity "i2c_top" for hierarchy "i2c_top:m0" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/cronometro.v Line: 383
+Warning (10230): Verilog HDL assignment warning at i2c_top.v(74): truncated value with size 32 to match size of target (8) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/i2c_top.v Line: 74
+Warning (10230): Verilog HDL assignment warning at i2c_top.v(110): truncated value with size 32 to match size of target (1) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/i2c_top.v Line: 110
+Warning (10230): Verilog HDL assignment warning at i2c_top.v(111): truncated value with size 32 to match size of target (4) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/i2c_top.v Line: 111
+Warning (10230): Verilog HDL assignment warning at i2c_top.v(139): truncated value with size 32 to match size of target (4) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/i2c_top.v Line: 139
+Warning (10230): Verilog HDL assignment warning at i2c_top.v(168): truncated value with size 32 to match size of target (1) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/i2c_top.v Line: 168
+Warning (10230): Verilog HDL assignment warning at i2c_top.v(169): truncated value with size 32 to match size of target (1) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/i2c_top.v Line: 169
+Warning (12125): Using design file led_mux.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: LED_mux File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/led_mux.v Line: 3
+Info (12128): Elaborating entity "LED_mux" for hierarchy "LED_mux:m1" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/cronometro.v Line: 396
+Warning (10270): Verilog HDL Case Statement warning at led_mux.v(50): incomplete case statement has no default case item File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/led_mux.v Line: 50
+Warning (10270): Verilog HDL Case Statement warning at led_mux.v(63): incomplete case statement has no default case item File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/led_mux.v Line: 63
+Warning (12125): Using design file debounce_explicit.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: debounce_explicit File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/debounce_explicit.v Line: 3
+Info (12128): Elaborating entity "debounce_explicit" for hierarchy "debounce_explicit:m2" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/cronometro.v Line: 404
+Warning (10230): Verilog HDL assignment warning at debounce_explicit.v(88): truncated value with size 32 to match size of target (21) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/debounce_explicit.v Line: 88
+Warning (10230): Verilog HDL assignment warning at debounce_explicit.v(89): truncated value with size 32 to match size of target (1) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/debounce_explicit.v Line: 89
+Warning (12125): Using design file pruebapantallalcd.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: PruebaPantallaLCD File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 1
+Info (12128): Elaborating entity "PruebaPantallaLCD" for hierarchy "PruebaPantallaLCD:lcd_inst" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/cronometro.v Line: 412
+Warning (10230): Verilog HDL assignment warning at pruebapantallalcd.v(22): truncated value with size 32 to match size of target (18) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 22
+Warning (10230): Verilog HDL assignment warning at pruebapantallalcd.v(42): truncated value with size 32 to match size of target (6) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 42
+Warning (10230): Verilog HDL assignment warning at pruebapantallalcd.v(59): truncated value with size 32 to match size of target (26) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 59
+Warning (10230): Verilog HDL assignment warning at pruebapantallalcd.v(82): truncated value with size 32 to match size of target (5) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 82
+Warning (10230): Verilog HDL assignment warning at pruebapantallalcd.v(84): truncated value with size 32 to match size of target (6) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 84
+Warning (10230): Verilog HDL assignment warning at pruebapantallalcd.v(88): truncated value with size 32 to match size of target (6) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 88
+Warning (10230): Verilog HDL assignment warning at pruebapantallalcd.v(97): truncated value with size 32 to match size of target (8) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 97
+Warning (10230): Verilog HDL assignment warning at pruebapantallalcd.v(98): truncated value with size 32 to match size of target (8) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 98
+Warning (10230): Verilog HDL assignment warning at pruebapantallalcd.v(100): truncated value with size 32 to match size of target (8) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 100
+Warning (10230): Verilog HDL assignment warning at pruebapantallalcd.v(101): truncated value with size 32 to match size of target (8) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 101
+Warning (10230): Verilog HDL assignment warning at pruebapantallalcd.v(103): truncated value with size 32 to match size of target (8) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 103
+Warning (10230): Verilog HDL assignment warning at pruebapantallalcd.v(104): truncated value with size 32 to match size of target (8) File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 104
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276004): RAM logic "LED_mux:m1|Ram0" is uninferred due to inappropriate RAM size File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/led_mux.v Line: 63
+Info (278001): Inferred 6 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "PruebaPantallaLCD:lcd_inst|Div0" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 97
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "PruebaPantallaLCD:lcd_inst|Mod0" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 98
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "PruebaPantallaLCD:lcd_inst|Div1" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 100
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "PruebaPantallaLCD:lcd_inst|Mod1" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 101
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "PruebaPantallaLCD:lcd_inst|Div2" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 103
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "PruebaPantallaLCD:lcd_inst|Mod2" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 104
+Info (12130): Elaborated megafunction instantiation "PruebaPantallaLCD:lcd_inst|lpm_divide:Div0" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 97
+Info (12133): Instantiated megafunction "PruebaPantallaLCD:lcd_inst|lpm_divide:Div0" with the following parameter: File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 97
+    Info (12134): Parameter "LPM_WIDTHN" = "5"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_ghm.tdf
+    Info (12023): Found entity 1: lpm_divide_ghm File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/lpm_divide_ghm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_8kh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_8kh File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/sign_div_unsign_8kh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_44f.tdf
+    Info (12023): Found entity 1: alt_u_div_44f File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/alt_u_div_44f.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/add_sub_7pc.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/add_sub_8pc.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "PruebaPantallaLCD:lcd_inst|lpm_divide:Mod0" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 98
+Info (12133): Instantiated megafunction "PruebaPantallaLCD:lcd_inst|lpm_divide:Mod0" with the following parameter: File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 98
+    Info (12134): Parameter "LPM_WIDTHN" = "5"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_j9m.tdf
+    Info (12023): Found entity 1: lpm_divide_j9m File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/lpm_divide_j9m.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "PruebaPantallaLCD:lcd_inst|lpm_divide:Div1" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 100
+Info (12133): Instantiated megafunction "PruebaPantallaLCD:lcd_inst|lpm_divide:Div1" with the following parameter: File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 100
+    Info (12134): Parameter "LPM_WIDTHN" = "6"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_hhm.tdf
+    Info (12023): Found entity 1: lpm_divide_hhm File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/lpm_divide_hhm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_9kh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_9kh File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/sign_div_unsign_9kh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_64f.tdf
+    Info (12023): Found entity 1: alt_u_div_64f File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/alt_u_div_64f.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "PruebaPantallaLCD:lcd_inst|lpm_divide:Mod1" File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 101
+Info (12133): Instantiated megafunction "PruebaPantallaLCD:lcd_inst|lpm_divide:Mod1" with the following parameter: File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/pruebapantallalcd.v Line: 101
+    Info (12134): Parameter "LPM_WIDTHN" = "6"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_k9m.tdf
+    Info (12023): Found entity 1: lpm_divide_k9m File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/db/lpm_divide_k9m.tdf Line: 25
+Info (13000): Registers with preset signals will power-up high File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/cronometro.v Line: 71
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "lcd_data[6]" is stuck at GND File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/cronometro.v Line: 14
+    Warning (13410): Pin "RW" is stuck at GND File: C:/Users/Acer/AppData/Local/quartus/Proyecto/Cronometro/cronometro.v Line: 16
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 10 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 724 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 44 output pins
+    Info (21060): Implemented 2 bidirectional pins
+    Info (21061): Implemented 674 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 32 warnings
+    Info: Peak virtual memory: 4790 megabytes
+    Info: Processing ended: Mon Dec  8 18:35:59 2025
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:25
+
+
